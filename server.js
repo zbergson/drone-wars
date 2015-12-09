@@ -22,6 +22,7 @@ mongoose.connect(mongoUri);
 // Models
 var User = require('./models/user');
 var Article = require('./models/article');
+var NYT = require('./models/nyt');
 
 //================
 // Sign Up
@@ -115,9 +116,9 @@ app.delete('/users/:id', function(req, res){
   });
 });
 
-//================
-// Create articles
-//================
+//=============================
+// Create drone strike articles
+//=============================
 
 app.post('/users/:id/articles', function(req, res){
   var article = new Article({
@@ -149,6 +150,37 @@ app.post('/users/:id/articles', function(req, res){
   });
 });
 
+//=================================
+// Create nyt drone strike articles
+//=================================
+
+app.post('/users/:id/nyt', function(req, res){
+  var nyt_article = new NYT({
+    nyt_id: req.body.id,
+    headline: req.body.headline,
+    date: req.body.date,
+    summary: req.body.summary,
+    web_url: req.body.web_url
+  });
+  nyt_article.save(function(err){
+    if(err) {
+      console.log(err);
+    } else {
+      res.send({
+        headline: nyt_article.headline,
+        date: nyt_article.date,
+        summary: nyt_article.summary,
+        web_url: nyt_article.web_url
+      });
+      User.findById(req.params.id).exec(function(err, user){
+        user.nyt.push(nyt_article);
+        console.log(user);
+        user.save();
+      });
+    };
+  });
+});
+
 //===========================
 // Retrieve User articles
 //===========================
@@ -166,7 +198,8 @@ app.get('/users/:id', function(req, res) {
         first_name: user.first_name,
         last_name: user.last_name,
         password: user.password_hash,
-        articles: user.articles
+        articles: user.articles,
+        nyt: user.nyt
       })
     };
   });

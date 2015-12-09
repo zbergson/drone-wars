@@ -90,7 +90,7 @@
 	</div>
 	
 	<!-- show profile modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content">
       <div class="modal-header">
@@ -101,23 +101,54 @@
        
 
 
-        <div id="view-profile"></div>
+        <div id="view-profile">
+        	<div>
+
+  					<!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" id="dronemap-data" class="active"><a href="#dronemap" aria-controls="home" role="tab" data-toggle="tab">Drone Map</a></li>
+					    <li role="presentation" id="nyt-data"><a href="#nyt" aria-controls="profile" role="tab" data-toggle="tab">NYT Articles</a></li>
+					  </ul>
+
+  					<!-- Tab panes -->
+<!-- 						  <div class="tab-content">
+						    <div role="tabpanel" class="tab-pane active" id="dronemap">...</div>
+						    <div role="tabpanel" class="tab-pane" id="nyt">...</div>					
+						  </div>
+ -->
+					</div>
+        </div>
 			
 			</div>
 
 
     <template id="view-article-template">
-      <p>{{username}}</p>
-      {{#each articles}}
+      
       	<div class="saved-articles"> 
+      		<p>{{username}}</p>
+      		{{#each articles}}
       	  <p id="article-town">{{town}}</p>
       	  <p id="article-country">{{country}}</p>
       	  <p id="article-narrative">{{narrative}}</p>
       	  <p id="article-deaths">{{deaths}}</p>
       	  <p id="article-link"><a href={{article_link}}>article</a></p>
+      	  <hr>
+      	  {{/each}}
       	</div>
-
-      {{/each}}
+      
+      	<div class="saved-nyt-articles" style="display: none" data-id="{{nyt_id}}">
+      		<p>{{username}}</p>
+      		{{#each nyt_articles}}
+      		<h4 class="nyt-url"><a href="{{web_url}}"><span class="nyt-headline">{{headline}}</span></a></h2>
+					<p class="nyt-summary">{{summary}}</p>
+					<p class="nyt-date">{{date}}</p>
+					<button type="button" class="btn btn-default btn-sm remove-nyt">
+  					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<hr>
+					{{/each}}
+      	</div>
+      	
  		</template>
 
 
@@ -133,26 +164,39 @@
   	<div class="modal-dialog">
 			<div class="modal-content">
 			      <div class="modal-header">
-			        <button type="button" class="close close-signin" data-dismiss="modal">&times;</button>
+			        <button type="button" class="close close-search" data-dismiss="modal">&times;</button>
 			        <h4 class="modal-title">Search For Stories</h4>
 			      </div>
 
 			      <div class="modal-body">
-			      	<div id="signin-container">
-			      			<div class="search-container">
+			      	<div id="search-container">
+			      			
 										<form class="navbar-form" role="search">
 											<div class="form-group">
 											  <input type="text" class="form-control" placeholder="Search the news ..." id="search-bar">
 											</div>
 											<button type="submit" class="custom-btn-1" id="search-submit">SUBMIT</button>
 										</form>  
-									</div>
+
+										<template id="nyt-search-results">
+											<div class="nyt-article" data-id="{{_id}}" headline="{{headline}}" summary="{{summary}}" date="{{date}}" url="{{web_url}}">
+												<h4 class="nyt-url"><a href="{{web_url}}"><span class="nyt-headline">{{headline}}</span></a></h2>
+												<p class="nyt-summary">{{summary}}</p>
+												<p class="nyt-date">{{date}}</p>
+												<button type="button" class="btn btn-default btn-sm save-nyt">
+  												<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+												</button>
+												<hr>
+											</div>
+
+										</template>
+									
 			      	</div>
 
 			      </div>
 
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default close-signin" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-default close-search" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 	  </div>

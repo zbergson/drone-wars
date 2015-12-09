@@ -148,12 +148,13 @@ $(document).ready(function(){
 			dataType: 'json',
 		}).done( function(data){
 			var source = $("#view-article-template").html();
-			var template= Handlebars.compile(source)
-			var context ={ username: data.username, articles: data.articles  };
+			var template = Handlebars.compile(source);
+			var context = { username: data.username, articles: data.articles, nyt_articles: data.nyt  };
 			var html = template(context);
 			var checkClass = $('#view-profile').hasClass('clicked');
 			if(checkClass) {
-				$("#view-profile").empty();
+				$('.saved-nyt-articles').empty();
+				$('.saved-articles').empty();
 			}
 			$("#view-profile").append(html);
 			
@@ -161,6 +162,16 @@ $(document).ready(function(){
 
 		});
 	};
+
+	$('#nyt-data').click(function(){
+		$('.saved-nyt-articles').show();
+		$('.saved-articles').hide();
+	});
+
+	$('#dronemap-data').click(function(){
+		$('.saved-nyt-articles').hide();
+		$('.saved-articles').show();
+	})
 
 //=======================================================================================
 //===============saved selected drone strike to profile page=============================

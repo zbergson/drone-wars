@@ -24,13 +24,19 @@ html, body {
 
 #searchModal .modal-dialog {
   width: 100%;
-  height: 100%;
+  height: 95%;
   padding: 0;
+  overflow-y: initial !important
 }
 
 #searchModal .modal-content {
   height: 100%;
   border-radius: 0;
+}
+
+.modal-body{
+    height: 95%;
+    overflow-y: auto;
 }
 
 
@@ -47,7 +53,7 @@ html, body {
   background-color:rgba(0, 0, 0,  0.42);
 }
 
-.search-container .form-group {
+#search-container .form-group {
 	width: 40%;
 }
 
