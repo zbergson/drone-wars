@@ -68,7 +68,7 @@ app.post('/login', function(req,res){
   var requestPassword = req.body.password;
   User.findOne({"email": requestEmail}).exec(function(err, user){
     var requestPasswordHash = md5(requestPassword);
-    if( user != null && requestPasswordHash == user.password_hash){
+    if( user != null && requestPasswordHash == user.password){
       res.cookie("loggedinId", user.id);
       res.send({
         id: user.id,

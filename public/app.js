@@ -1,26 +1,35 @@
 $(document).ready(function(){
 
+//=======================================================================================
+//===========================get drone data from api=====================================
+//=======================================================================================
+  var getDrones = function() {
 
-var getDrones = function() {
+  	var urlDrone = 'http://api.dronestre.am/data';
+  		
 
-	var urlDrone = 'http://api.dronestre.am/data';
-		
+  	$.ajax({
+  		url: urlDrone,
+  		crossOrigin: true,
+  		type: "GET",
+  		dataType: 'jsonp'
+  	}).done(function(data){
+  		addMap(data);
+  	});
 
-	$.ajax({
-		url: urlDrone,
-		crossOrigin: true,
-		type: "GET",
-		dataType: 'jsonp'
-	}).done(function(data){
-		addMap(data);
-	});
+  }
 
-}
+  getDrones();
 
-getDrones();
+//=======================================================================================
+//===========================set empty array for gmaps markers===========================
+//=======================================================================================
 
+  var gmarkers = [];
 
-
+//=======================================================================================
+//===========================start add map function======================================
+//=======================================================================================
 
 	var addMap = function(data) {
 		
@@ -52,8 +61,14 @@ getDrones();
             deaths: data.strike[i]['deaths'],
             article_link: data.strike[i]['bij_link']
            });
+          gmarkers.push(marker);
+
           var infowindow = new google.maps.InfoWindow()
-          // infowindow.id = "strikeInfo"
+
+//=======================================================================================
+//===========================set content for gmaps info window===========================
+//=======================================================================================
+
           var content = 
           	"<span class='strikeTitle'>" + "<span class='strikeTown'>" + marker.town + "</span>" + ", " + "<span class='strikeCountry'>" + marker.country + "</span>" + "</span>" 
           	+ "<br>" + "<span class='strikeDate'>" + marker.date +"</span>" +"<br>"+ 
@@ -67,8 +82,13 @@ getDrones();
 				        infowindow.open(map,marker);
 				    };
 					})(marker,content,infowindow));  
+
         }
       }
+
+//=======================================================================================
+//===========================call map on window load=====================================
+//=======================================================================================
       
 			
 	google.maps.event.addDomListener(window, 'load', initialize);
@@ -76,6 +96,26 @@ getDrones();
 
 	}
 
+//=======================================================================================
+//===========================sort markers by country=====================================
+//=======================================================================================
+
+
+  filterMarkers = function (category) {
+    console.log('filter is working');         
+
+      for (i = 0; i < gmarkers.length; i++) {
+        marker = gmarkers[i];
+        // If is same category or category not picked
+        if (gmarkers[i]['country'] == category || category.length === 0) {
+          marker.setVisible(true);
+        }
+        // Categories don't match 
+        else {
+          marker.setVisible(false);
+        }
+      }
+  }
 
 
 

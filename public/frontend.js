@@ -1,13 +1,14 @@
 $(document).ready(function(){ 
-	console.log("hi");
+	
 	$("#signup-button").click(function(){
 		event.preventDefault();
 		signupForm();
 	});
 
-// =======================
-// User Signup
-// =======================
+
+//=======================================================================================
+//==============================User sign up=============================================
+//=======================================================================================
 
 	var signupForm = function(){
 		var usernameInput = $("#inputUserName").val();
@@ -33,125 +34,175 @@ $(document).ready(function(){
 
 	};
 
-	var loggedIn = function(data){
-		// what happens after user is created
-		$("#signup-container").remove();
-		$('#username-container').append('<h1 id="welcome-username">Welcome, ' + data.username + "!</h1>");
-		
-		
-	}
+//=======================================================================================
+//===========================User login functionality====================================
+//=======================================================================================
 
-
-// =======================
-// Get articles
-// =======================
-
-$("#get-articles").click(function(){
-	getArticles();
-});
-
-var getArticles = function(){
-	$.ajax({
-		url: "/users/" + Cookies.get("loggedinId"),
-		method: 'GET',
-		dataType: 'json',
-	}).done( function(data){
-		var source = $("#view-article-template").html();
-		var template= Handlebars.compile(source)
-		var context ={ username: data.username, articles: data.articles  };
-		var html = template(context);
-		var checkClass = $('#view-profile').hasClass('clicked');
-		if(checkClass) {
-			$("#view-profile").empty();
-		}
-		$("#view-profile").append(html);
-		
-		$("#view-profile").addClass('clicked');
-
+	$("#signin-button").click(function(){
+		showSignInForm();
 	});
-};
 
+	var showSignInForm = function() {
+		$("#signinModal").show();
+		$('#form-container').empty();
+		$('#signin-button').hide();
+		$('#signup-button').hide();
+		$('#signup-form').remove();
 
+		var template = Handlebars.compile($('#signin-form-template').html());
 
-$(document).on("click", "#saveArticle", function() {
-	saveArticleUser();
-});
+		$('#signin-container').append( template );
 
-var saveArticleUser = function() {
+		$(".close-signin").click(function() {
+			$("#signin-form").remove();
+			$("#signinModal").hide();
+			$('#signin-button').show();
+		});
 
-	var attackTown = $('.strikeTown').text();
-	var attackCountry = $('.strikeCountry').text();
-	var attackDate = $('.strikeDate').text();
-	var attackNarrative = $('.strikeNarrative').text();
-	var attackDeaths = parseInt($('.strikeDeaths').text());
-	var attackArticle = $('.strikeArticle').children().attr('href');
-	console.log(attackArticle);
-	
-	var attackData = {
-		town: attackTown,
-		country: attackCountry,
-		date: attackDate,
-		narrative: attackNarrative,
-		deaths: attackDeaths,
-		article: attackArticle
+		$('#signin-submit').click(function() {
+			console.log("testing submit");
+			$("#signinModal").hide();
+
+			$('#signin-form-template').hide();
+
+			signinSubmit();
+		});
+
 	}
+
+	//=======================================================================================
+	//===========================Post request for Login======================================
+	//=======================================================================================
+
+	var signinSubmit = function() {
+		var emailInput = $('#email').val();
+		var passwordInput = $('#password').val();
+		console.log('here at signinsubmit');
+		event.preventDefault();
+
+		var userLogin = {
+			email: emailInput,
+			password: passwordInput
+		};
+
+    $.ajax({
+			url: '/login',
+			type: 'POST',
+			dataType: 'json',
+			data: userLogin
+		}).done(loggedIn).fail(function(){
+			alert('wrong password or email!');
+		});
+	}
+
+	//=======================================================================================
+	//=====================================Sign out==========================================
+	//=======================================================================================
+
+	$('#signout').click(function(){
+		Cookies.remove('loggedinId');
+		location.reload();
+	});
+
+	var loggedIn = function(data){
+		$('#signinModal').hide();
+		$("#signup-container").hide();
+		$('#username-container').append('<h1 id="welcome-username">Welcome, ' + data.username + "!</h1>");
+		$('#signin-button').hide();
+		$("#get-articles").show();
+		$('#signout').show()
+	}
+
+	var checkCookies = function() {
+
+		if (Cookies.get("loggedinId") != null) {
+			$.ajax({
+				url: "/users/" + Cookies.get("loggedinId"),
+				method: "GET",
+				dataType: "json"
+			}).done(loggedIn);
+			
+		} else {
+			$("#get-articles").hide();
+			$("#signup-container").show();
+			$('#signout').hide()
+		};
+
+	}
+
+	checkCookies();
+
+
+//=======================================================================================
+//===============get info about saved drone strike to load on profile page===============
+//=======================================================================================
+
+	$("#get-articles").click(function(){
+		getArticles();
+	});
+
+	var getArticles = function(){
+		$.ajax({
+			url: "/users/" + Cookies.get("loggedinId"),
+			method: 'GET',
+			dataType: 'json',
+		}).done( function(data){
+			var source = $("#view-article-template").html();
+			var template= Handlebars.compile(source)
+			var context ={ username: data.username, articles: data.articles  };
+			var html = template(context);
+			var checkClass = $('#view-profile').hasClass('clicked');
+			if(checkClass) {
+				$("#view-profile").empty();
+			}
+			$("#view-profile").append(html);
+			
+			$("#view-profile").addClass('clicked');
+
+		});
+	};
+
+//=======================================================================================
+//===============saved selected drone strike to profile page=============================
+//=======================================================================================
+
+	$(document).on("click", "#saveArticle", function() {
+		saveArticleUser();
+	});
+
+	var saveArticleUser = function() {
+
+		var attackTown = $('.strikeTown').text();
+		var attackCountry = $('.strikeCountry').text();
+		var attackDate = $('.strikeDate').text();
+		var attackNarrative = $('.strikeNarrative').text();
+		var attackDeaths = parseInt($('.strikeDeaths').text());
+		var attackArticle = $('.strikeArticle').children().attr('href');
+		console.log(attackArticle);
+		
+		var attackData = {
+			town: attackTown,
+			country: attackCountry,
+			date: attackDate,
+			narrative: attackNarrative,
+			deaths: attackDeaths,
+			article: attackArticle
+		}
 
 		$.ajax({
-		url: "/users/" + Cookies.get("loggedinId") + "/articles",
-		type: "POST",
-		dataType: 'json',
-		data: attackData
-	}).done( getArticles );
+			url: "/users/" + Cookies.get("loggedinId") + "/articles",
+			type: "POST",
+			dataType: 'json',
+			data: attackData
+		}).done( getArticles );
 
 
-}
+	}
 
 
 
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var myModule = angular.module("SignupModule", []);
-
-// myModule.directive("ngSignup", function(){
-// 	return {
-// 		controllerAs: 'postUser',
-// 		controller: [ '$http', function SignupCtrl( $http){
-// 			this.$http = $http;
-// 			var self = this;
-
-// 			this.testing = function() {
-// 				console.log('testing');
-// 			}
-
-// 			this.createUser = function(){
-// 				console.log("I work");
-// 				self.$http.post('/users', {   
-// 					username: this.formUserUsername,
-//   				first_name: this.formUserFirstName,
-//   				last_name: this.formUserLastName,
-//   				email: this.formUserEmail,
-//   				password: this.formUserPassword
-// 				}).then(function(response){
-// 					self.books.push(response.data)
-// 				});
-// 			};
-// 		}]
-// 	}
-// });
 
 

@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Drone Data</title>
+	<title>Drone Wars</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.4/js.cookie.js"></script>
 	<link rel="stylesheet" href="styles.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="app.js"></script>
-		<script src="frontend.js"></script>
-
-
+	<script src="app.js"></script>
+	<script src="frontend.js"></script>
+	<script src="search.js"></script>
 </head>
 <body>
 
 
-	<div id ="signup-container">
+	<div id="signup-container" style="display: none">
 		<form class="form-horizontal">
   		<div class="form-group">
   		<label for="User_Name" class="col-sm-2 control-label">User Name</label>
@@ -49,7 +47,49 @@
 	<button id="signup-button">Sign Up</button>
 			
 	</div>
+	<!-- show login modal -->
+	<div id="signinModal" class="modal" role="dialog">
+  	<div class="modal-dialog">
+			<div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close close-signin" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Log in</h4>
+			      </div>
+
+			      <div class="modal-body">
+			      	<div id="signin-container"></div>
+
+
+			        <template id="signin-form-template">
+
+								<form id="signin-form">
+
+									<div class="form-group">
+								    <label for="exampleInputEmail1">Email address</label>
+								    <input type="email" class="form-control" id="email" placeholder="Email">
+									</div>
+
+									<div class="form-group">
+								    <label for="exampleInputPassword1">Password</label>
+								    <input type="password" class="form-control" id="password" placeholder="Password">
+									</div>
+
+									<button type="submit" class="btn btn-default" id="signin-submit">Submit</button>
+								</form>
+
+							</template>
+
+
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default close-signin" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+	  </div>
+	</div>
 	
+	<!-- show profile modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   	<div class="modal-dialog" role="document">
     	<div class="modal-content">
@@ -88,15 +128,62 @@
   </div>
 </div>
 
+<!-- show fullscreen search modal -->
+	<div id="searchModal" class="modal" role="dialog">
+  	<div class="modal-dialog">
+			<div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close close-signin" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Search For Stories</h4>
+			      </div>
 
+			      <div class="modal-body">
+			      	<div id="signin-container">
+			      			<div class="search-container">
+										<form class="navbar-form" role="search">
+											<div class="form-group">
+											  <input type="text" class="form-control" placeholder="Search the news ..." id="search-bar">
+											</div>
+											<button type="submit" class="custom-btn-1" id="search-submit">SUBMIT</button>
+										</form>  
+									</div>
+			      	</div>
+
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default close-signin" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+	  </div>
+	</div>
+
+
+<button type="button" id="signin-button" class="btn btn-primary btn-lg" data-toggle="modal">
+  Log In
+</button>
+<button type="button" id="signout" class="btn btn-primary btn-lg" data-toggle="modal">
+  Log Out
+</button>
+<button type="button" id="search" class="btn btn-primary btn-lg" data-toggle="modal">
+  Search
+</button>
 <button type="button" id="get-articles" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Profile
 </button>
 
 
 	<br>
+		<select id="type" onchange="filterMarkers(this.value);">
+    <option value="">Please select category</option>
+    <option value="Pakistan">Pakistan</option>
+    <option value="Somalia">Somalia</option>
+    <option value="Yemen">Yemen</option>
+</select>
 
 	<div id="map"></div>
+
+
 	
 
 
