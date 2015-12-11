@@ -1,4 +1,5 @@
 // DEPENDENCIES
+require('dotenv').load();
 
 var express      = require('express'),
     mongoose     = require('mongoose'),
@@ -7,7 +8,20 @@ var express      = require('express'),
     cookieParser = require('cookie-parser'),
     port         = process.env.PORT || 3000;
     app          = express();
+    http = require('http').Server(app);
+    io = require('socket.io')(http);
     mongoUri     = process.env.MONGOLAB_URI || 'mongodb://localhost/drone-data';
+
+var Twitter = require('twitter');
+ 
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
+
+
 
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +29,7 @@ app.use(express.static('public'));
 app.use(cookieParser());
 
 // LISTENER
-app.listen(port);
+http.listen(port);
 console.log('===== Connecting to DB ... =====', mongoUri);
 mongoose.connect(mongoUri);
 
@@ -229,5 +243,21 @@ app.delete('/users/:id/articles/:article_id', function(req, res){
   });
 
 });
+
+//================
+// Search Twitter
+//================
+
+// client.stream('statuses/filter', {track: 'drone'}, function(stream) {
+//   stream.on('data', function(tweet) {
+//     io.emit('drone-tweets', tweet);
+//   });
+ 
+//   stream.on('error', function(error) {
+//     console.log(error);
+//     throw error;
+
+//   });
+// });
 
 

@@ -29,7 +29,19 @@ html, body {
   overflow-y: initial !important
 }
 
+
 #searchModal .modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+
+#tweetModal .modal-dialog {
+	height: 95%;
+  padding: 0;
+  overflow-y: initial !important
+}
+
+#tweetModal .modal-content {
   height: 100%;
   border-radius: 0;
 }
@@ -60,6 +72,10 @@ html, body {
 #search-bar {
 	margin: 0 auto;
 	width: 100%;
+}
+
+.username-image {
+	display: inline-block;
 }
 
 
