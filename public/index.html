@@ -16,7 +16,6 @@
 	<script src="app.js"></script>
 	<script src="frontend.js"></script>
 	<script src="search.js"></script>
-	<script src="tweet.js"></script>
 	<script src="twitter_list.js"></script>
 
 </head>
@@ -134,16 +133,18 @@
       	  {{/each}}
       	</div>
       
-      	<div class="saved-nyt-articles" style="display: none" data-id="{{nyt_id}}">
+      	<div class="saved-nyt-articles" style="display: none">
       		<p>{{username}}</p>
       		{{#each nyt_articles}}
-      		<h4 class="nyt-url"><a href="{{web_url}}"><span class="nyt-headline">{{headline}}</span></a></h2>
-					<p class="nyt-summary">{{summary}}</p>
-					<p class="nyt-date">{{date}}</p>
-					<button type="button" class="btn btn-default btn-sm remove-nyt">
-  					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-					</button>
-					<hr>
+      		<div class="individual-nyt-articles" data-id="{{_id}}">
+	      		<h4 class="nyt-url"><a href="{{web_url}}"><span class="nyt-headline">{{headline}}</span></a></h2>
+						<p class="nyt-summary">{{summary}}</p>
+						<p class="nyt-date">{{date}}</p>
+						<button type="button" class="btn btn-default btn-sm remove-nyt">
+	  					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+						<hr>
+					</div>
 					{{/each}}
       	</div>
       	
@@ -258,7 +259,7 @@
 
 	<br>
 		<select id="type" onchange="filterMarkers(this.value);">
-    <option value="">Please select category</option>
+    <option value="">Show all drone strikes</option>
     <option value="Pakistan">Pakistan</option>
     <option value="Somalia">Somalia</option>
     <option value="Yemen">Yemen</option>

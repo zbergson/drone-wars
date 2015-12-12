@@ -16,6 +16,7 @@ $(document).ready(function(){
 		nytSearchSubmit();
 	});
 
+
 	var nytSearchSubmit = function() {
 
 		var searchInput = $('#search-bar').val();
@@ -48,6 +49,7 @@ $(document).ready(function(){
 		for (i = 0; i < saveNYT.length; i++) {
 			$(saveNYT[i]).click(saveNYTArticle);
 		}
+
 	}
 
 	// $(document).on("click", ".save-nyt", function() {
@@ -79,6 +81,10 @@ $(document).ready(function(){
 		
 
 	}
+
+
+
+
 
 
 

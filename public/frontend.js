@@ -146,7 +146,7 @@ $(document).ready(function(){
 			url: "/users/" + Cookies.get("loggedinId"),
 			method: 'GET',
 			dataType: 'json',
-		}).done( function(data){
+		}).done(function(data){
 			var source = $("#view-article-template").html();
 			var template = Handlebars.compile(source);
 			var context = { username: data.username, articles: data.articles, nyt_articles: data.nyt  };
@@ -159,6 +159,7 @@ $(document).ready(function(){
 			$("#view-profile").append(html);
 			
 			$("#view-profile").addClass('clicked');
+			
 
 		});
 	};
@@ -166,6 +167,7 @@ $(document).ready(function(){
 	$('#nyt-data').click(function(){
 		$('.saved-nyt-articles').show();
 		$('.saved-articles').hide();
+		deleteClickNYTArticle();
 	});
 
 	$('#dronemap-data').click(function(){
@@ -209,6 +211,34 @@ $(document).ready(function(){
 
 
 	}
+
+
+
+	var deleteClickNYTArticle = function() {
+		
+		var removeNYT = $('.remove-nyt');
+
+		for (i = 0; i < removeNYT.length; i++) {
+			$(removeNYT[i]).click(deleteNYTArticle);
+		}
+	}
+
+	var deleteNYTArticle = function() {
+		var nyt_id = $(this).parent().attr('data-id');
+
+		$.ajax({
+			url: "/users/" + Cookies.get("loggedinId") + "/nyt/" + nyt_id,
+			type: "DELETE",
+			dataType: "json"
+		}).done(function(){
+			console.log('deleted nyt article');
+			$('.saved-nyt-articles').empty();
+			getArticles();
+		});
+
+	}
+
+	
 
 
 

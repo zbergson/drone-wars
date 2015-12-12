@@ -220,24 +220,54 @@ app.get('/users/:id', function(req, res) {
 });
 
 
-//================
-// Delete articles
-//================
+//============================
+// Delete dronestream articles
+//============================
 
 app.delete('/users/:id/articles/:article_id', function(req, res){
-  Article.findbyId(req.params.article_id).remove(function(err, article){
+  Article.findById(req.params.article_id).remove(function(err, article){
     if(err){
       console.log(err);
     }
   });
 
-  User.findbyId(req.params.id).then(function(user){
+  User.findById(req.params.id).then(function(user){
     user.articles.forEach(function(article){
       if(article._id == req.params.article_id){
         var index= user.articles.indexOf(article);
         user.article.splice(index, 1);
-        user.save;
+        user.save();
         res.send(user);
+      }
+    });
+  });
+
+});
+
+//============================
+// Delete nyt articles
+//============================
+
+app.delete('/users/:id/nyt/:article_id', function(req, res){
+  // NYT.findById(req.params.article_id).remove(function(err, article){
+  //   if(err){
+  //     console.log(err);
+  //   }
+  // });
+
+  User.findById(req.params.id).then(function(user, err){
+    user.nyt.forEach(function(story){
+      if(story._id == req.params.article_id){
+        console.log(story);
+        var index = user.nyt.indexOf(story);
+        console.log('=======================' + story._id + '   ' + req.params.article_id + ' ' + index );
+        user.nyt.splice(index, 1);
+        user.save();
+        // console.log(user);
+        res.send(user);
+      }
+      else {
+        console.log(err);
       }
     });
   });

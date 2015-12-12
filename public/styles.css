@@ -78,4 +78,10 @@ html, body {
 	display: inline-block;
 }
 
+#type {
+	position: absolute;
+	z-index: 999;
+	top: 100px;
+}
+
 
