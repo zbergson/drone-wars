@@ -225,19 +225,26 @@ app.get('/users/:id', function(req, res) {
 //============================
 
 app.delete('/users/:id/articles/:article_id', function(req, res){
-  Article.findById(req.params.article_id).remove(function(err, article){
-    if(err){
-      console.log(err);
-    }
-  });
+  // Article.findById(req.params.article_id).remove(function(err, article){
+  //   if(err){
+  //     console.log(err);
+  //   }
+  // });
 
-  User.findById(req.params.id).then(function(user){
+  User.findById(req.params.id).then(function(user, err){
+
     user.articles.forEach(function(article){
       if(article._id == req.params.article_id){
-        var index= user.articles.indexOf(article);
-        user.article.splice(index, 1);
+        var index = user.articles.indexOf(article);
+        console.log('==============' + index);
+        user.articles.splice(index, 1);
         user.save();
+       
         res.send(user);
+      }
+
+      else {
+        console.log(err);
       }
     });
   });

@@ -139,6 +139,7 @@ $(document).ready(function(){
 
 	$("#get-articles").click(function(){
 		getArticles();
+		
 	});
 
 	var getArticles = function(){
@@ -159,10 +160,16 @@ $(document).ready(function(){
 			$("#view-profile").append(html);
 			
 			$("#view-profile").addClass('clicked');
-			
+
+			var removeDroneArticle = $('.remove-article');
+
+			for (i = 0; i < removeDroneArticle.length; i++) {
+				$(removeDroneArticle[i]).click(deleteDroneArticle);
+			}
 
 		});
 	};
+
 
 	$('#nyt-data').click(function(){
 		$('.saved-nyt-articles').show();
@@ -173,7 +180,8 @@ $(document).ready(function(){
 	$('#dronemap-data').click(function(){
 		$('.saved-nyt-articles').hide();
 		$('.saved-articles').show();
-	})
+		
+	});
 
 //=======================================================================================
 //===============saved selected drone strike to profile page=============================
@@ -231,11 +239,32 @@ $(document).ready(function(){
 			type: "DELETE",
 			dataType: "json"
 		}).done(function(){
-			console.log('deleted nyt article');
 			$('.saved-nyt-articles').empty();
 			getArticles();
 		});
 
+	}
+
+	// var deleteClickDroneArticle = function() {
+	// 	var removeDroneArticle = $('.remove-article');
+	// 	for (i = 0; i < removeDroneArticle.length; i++) {
+	// 		$(removeDroneArticle[i]).click(deleteDroneArticle);
+	// 	}
+	// }
+
+	var deleteDroneArticle = function() {
+		var article_id = $(this).parent().attr('data-id');
+		console.log(article_id);
+
+		$.ajax({
+			url: "/users/" + Cookies.get("loggedinId") + "/articles/" + article_id,
+			type: "DELETE",
+			dataType: "json"
+		}).done(function(){
+			console.log('artice deleted');
+			$('.saved-articles').empty();
+			getArticles();
+		})
 	}
 
 	

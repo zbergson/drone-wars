@@ -124,12 +124,17 @@
       	<div class="saved-articles"> 
       		<p>{{username}}</p>
       		{{#each articles}}
-      	  <p id="article-town">{{town}}</p>
-      	  <p id="article-country">{{country}}</p>
-      	  <p id="article-narrative">{{narrative}}</p>
-      	  <p id="article-deaths">{{deaths}}</p>
-      	  <p id="article-link"><a href={{article_link}}>article</a></p>
-      	  <hr>
+      		<div class="individual-drone-articles" data-id="{{_id}}">
+	      	  <p id="article-town">{{town}}</p>
+	      	  <p id="article-country">{{country}}</p>
+	      	  <p id="article-narrative">{{narrative}}</p>
+	      	  <p id="article-deaths">Deaths: {{deaths}}</p>
+	      	  <p id="article-link"><a href={{article_link}}>article</a></p>
+	      	  <button type="button" class="btn btn-default btn-sm remove-article">
+		  				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</button>
+	      	  <hr>
+      		</div>
       	  {{/each}}
       	</div>
       
