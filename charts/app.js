@@ -28,7 +28,6 @@ $(document).ready(function(){
 
   var makeChart = function(data) {
     var time = moment(data.strike[0]['date']).format('YYYY');
-    console.log(parseInt(time));
 
     data = data.strike
 
@@ -40,7 +39,6 @@ $(document).ready(function(){
       data_array.push(country);
     });
 
-    console.log(data_array);
 
     var country = $('#country').prop('checked');
 
