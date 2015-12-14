@@ -35,14 +35,14 @@ $(document).ready(function(){
 
     data.forEach(function(data){
       var country = {"country" : data.country, "deaths" : parseInt(data.deaths_max), "year" : 
-      parseInt(moment(data.date).format('YYYY')), "region" : data.location, "drone-strikes" : 1};
+      parseInt(moment(data.date).format('YYYY')), "region" : data.location, "drone-strikes" : 1, "town" : data.town};
       data_array.push(country);
     });
 
 
     var country = $('#country').prop('checked');
 
-    if (($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#region').prop('checked') === false && $('#number').prop('checked') === false)  || $('#year').prop('checked') === true) {
+    if (($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#region').prop('checked') === false && $('#number').prop('checked') === false && $('#town').prop('checked') === false )  || $('#year').prop('checked') === true) {
 
       var visualization = d3plus.viz()
       .container('#viz')
@@ -68,7 +68,7 @@ $(document).ready(function(){
 
     }
 
-    else if (($('#country').prop('checked') === true) && ($('#region').prop('checked') === false && $('#year').prop('checked') === false && $('#number').prop('checked') === false)) {
+    else if (($('#country').prop('checked') === true) && ($('#region').prop('checked') === false && $('#year').prop('checked') === false && $('#number').prop('checked') === false && $('#town').prop('checked') === false)) {
 
       var visualization = d3plus.viz()
       .container('#viz')
@@ -81,26 +81,21 @@ $(document).ready(function(){
       .y("deaths")
       .x("country")
       .timing({"transitions" : "1500"})
-      .ui([{ 
-        "label": "Visualization Type",
-        "method": "type", 
-        "value": ["bar", "box"]
-      }])
       .draw()
 
       $('#checkboxes').show();
 
     }
 
-    else if (($('#region').prop('checked') === true) && ($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#number').prop('checked') === false) ) {
+    else if (($('#region').prop('checked') === true) && ($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#number').prop('checked') === false && $('#town').prop('checked') === false) ) {
 
       var visualization = d3plus.viz()
       .container('#viz')
       .data(data_array)
       .type("bubbles")
       .messages( "Loading..." )
-      .id(["region", "country"])
-      .title('Drone Deaths Between 2002-present')
+      .id(["country", "region"])
+      .title('Drone Deaths by Region in Pakistan, Yemen and Somalia')
       // .text("region")
       .size("deaths")
       .color("country")
@@ -112,7 +107,27 @@ $(document).ready(function(){
 
     }
 
-    else if (($('#number').prop('checked') === true) && ($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#region').prop('checked') === false) ) {
+    else if (($('#town').prop('checked') === true) && ($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#number').prop('checked') === false && $('#region').prop('checked') === false) ) {
+
+      var visualization = d3plus.viz()
+      .container('#viz')
+      .data(data_array)
+      .type("tree_map")
+      .messages( "Loading..." )
+      .id(["country", "town"])
+      .title('Drone Deaths by Region in Pakistan, Yemen and Somalia')
+      // .text("region")
+      .size("deaths")
+      .color("country")
+      .legend({"size" : 50})
+      .timing({"transitions" : "1500"})
+      .draw()
+
+      $('#checkboxes').show();
+
+    }
+
+    else if (($('#number').prop('checked') === true) && ($('#country').prop('checked') === false && $('#year').prop('checked') === false && $('#region').prop('checked') === false && $('#town').prop('checked') === false) ) {
 
       var visualization = d3plus.viz()
       .container('#viz')
@@ -128,7 +143,7 @@ $(document).ready(function(){
       .ui([{ 
         "label": "Visualization Type",
         "method": "type", 
-        "value": ["line", "scatter", "stacked"]
+        "value": ["line", "scatter"]
       }])
       .timeline({"hover": "grab"})
       .timing({"transitions" : "1500"})
