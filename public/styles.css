@@ -2,10 +2,54 @@ html, body {
 	margin: 0; padding: 0; height: 100%; 
 }
 
-#map {
-	height: 90%;
+#jumbotron {
+	background-image: linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0,0.75)), url('drone-strike.gif');
+	height: 700px;
+	background-size: cover;
+	background-position: center;
+	text-align: center;
+	/*font-family: Raleway, sans-serif;*/
 }
 
+#headline {
+	font-family: 'Bevan', cursive;
+	color: white;
+	font-size: 5em;
+}
+
+#map {
+	height: 100%;
+}
+
+#twitter-logo {
+	opacity: 0.7;
+}
+
+#twitter-logo:hover {
+	opacity: 0.5;
+}
+
+#jumbo-container {
+	position: relative;
+	top: 25px;
+}
+
+#navbar {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	font-size: 1.75em;
+}
+
+#navbar li {
+	text-decoration: none;
+	display: inline-block;
+	padding-right: 0.5em;
+}
+
+.nav-link a {
+	text-decoration: none
+}
 
 
 #username-container{
@@ -17,6 +61,37 @@ html, body {
 }
 
 /* full screen modal style*/
+
+
+#mapModal .modal-content {
+	height: 95%;
+	border-radius: 0;
+}
+
+#mapModal .modal-dialog {
+  width: 90%;
+  height: 95%;
+  padding: 0;
+  overflow-y: initial !important
+}
+
+#chartModal {
+	width: 100%;
+	height: 100%;
+}
+
+#chartModal .modal-content {
+	height: 100%;
+	border-radius: 0;
+}
+
+#chartModal .modal-dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow-y: initial !important
+}
+
 #searchModal {
 	display: none;
 	opacity: 0.92;
@@ -82,6 +157,11 @@ html, body {
 	position: absolute;
 	z-index: 999;
 	top: 100px;
+}
+
+#viz {
+	position: relative;
+	height: 90%;
 }
 
 
