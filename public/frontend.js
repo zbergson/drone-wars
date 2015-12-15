@@ -5,6 +5,21 @@ $(document).ready(function(){
 		signupForm();
 	});
 
+	$('#wrapper').mouseover(function(){
+		$('.text').show();
+	});
+
+	$('#wrapper').mouseout(function(){
+		$('.text').hide();
+	});
+
+	$('#wrapper2').mouseover(function(){
+		$('.text').show();
+	});
+
+	$('#wrapper2').mouseout(function(){
+		$('.text').hide();
+	});
 
 
 
@@ -20,7 +35,7 @@ $(document).ready(function(){
 		var firstNameInput = $("#inputFirstName").val();
 		var lastNameInput = $("#inputLastName").val();
 		var emailInput = $("#inputEmail").val();
-		var passwordInput =$("#inputPassword").val();
+		var passwordInput = $("#inputPassword").val();
 
 		var user = {
 			username: usernameInput,

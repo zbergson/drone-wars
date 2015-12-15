@@ -152,9 +152,12 @@ $(document).ready(function(){
   $('#map-click').click(function(){
     makeMyMap();
     $("#mapModal").show();
-    
-
   });
+
+  $('#map-click-panel').click(function(){
+    makeMyMap();
+    $("#mapModal").show();
+  })
 
   $('.close-map').click(function(){
     $("#mapModal").hide();

@@ -13,10 +13,10 @@ $(document).ready(function(){
         dataType: 'jsonp'
       }).done(function(data){
         makeChart(data);
-          $('#submit').click(function(){
-            event.preventDefault();
-            makeChart(data);
-          });
+          // $('#submit').click(function(){
+          //   event.preventDefault();
+          //   makeChart(data);
+          // });
       });
 
     }
@@ -115,7 +115,7 @@ $(document).ready(function(){
         .type("tree_map")
         .messages( "Loading..." )
         .id(["country", "town"])
-        .title('Drone Deaths by Region in Pakistan, Yemen and Somalia')
+        .title('Drone Deaths by Town in Pakistan, Yemen and Somalia')
         // .text("region")
         .size("deaths")
         .color("country")
@@ -157,15 +157,32 @@ $(document).ready(function(){
         alert('please check one box!');
       }
 
+    $('.close-chart').click(function(){
+      $('#viz').empty();
+      $('#chartModal').hide();
+      $('.box').attr('checked', false);
+    });
 
     }
   }
 
   $('#charts').click(function(){
-
     $('#chartModal').show();
     makeVisualizations();
-  })
+  });
+
+
+
+  $('#chart-click-panel').click(function(){
+    $('#chartModal').show();
+    makeVisualizations();
+  });
+
+  $('#submit').click(function(){
+    event.preventDefault();
+    makeVisualizations();
+  });
+
     
 
 
