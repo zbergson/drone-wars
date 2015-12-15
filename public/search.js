@@ -6,6 +6,10 @@ $(document).ready(function(){
 		
 	});
 
+	$('#nytimes-click-panel').click(function(){
+		$('#searchModal').show();
+	});
+
 	$('.close-search').click(function(){
 		$('#searchModal').hide();
 		console.log('close search works!');

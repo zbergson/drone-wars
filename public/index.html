@@ -31,13 +31,14 @@
 				<div class="col-md-8"></div>
 				<div class="col-md-4">
 					<ul id="navbar">
-						<li id="get-articles"><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
-						<li id="search"><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
-						<li id="tweet-button"><a href="#"><img id="twitter-logo" src="twitterlogo.png" width="45" alt=""></a></li>
-						<li id="charts"><a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></a></li>
-						<li id="map-click"><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-						<li id="signout"><a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
-						<li id="signin-button"><a href="#"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>
+						<li id="signup-button">SIGN UP</li>
+						<li id="get-articles">PROFILE</li>
+						<li id="tweet-button">FEED</li>
+						<li id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></li>
+						<li id="charts"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></li>
+						<li id="map-click"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></li>
+						<li id="signout">LOG OUT</li>
+						<li id="signin-button">LOG IN</a></li>
 					</ul>
 				</div>
 				
@@ -59,7 +60,7 @@
 			<br>
 			<div id="line"></div>
 			<br>
-			<h6 id="byline">By Zach Bergson</h5>
+			<h6 id="byline"><i>By Zach Bergson</i></h5>
 		</div>
 		
 	</div>
@@ -82,11 +83,14 @@
 			</div>
 			<div class="col-md-3"></div>
 		</div>
+		<div id="up-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></div>
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-10" id="wrapper">
-				<img class="story-panel" src="map.png" alt="">
-				<p class="text" id="map-click-panel">Launch map visualization</p>
+				<div class="content-package">
+					<img class="story-panel" src="map.png" alt="" style="width: 100%">
+					<p class="text hover" id="map-click-panel">Launch map visualization</p>
+				</div>
 			</div>
 			<div class="col-md-1"></div>
 		</div>
@@ -111,8 +115,10 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-10" id="wrapper2">
-				<img class="story-panel" src="visualizations.png" alt="">
-				<p class="text" id="chart-click-panel">Launch drone data visualizations</p>
+				<div class="content-package">
+					<img class="story-panel" src="visualizations.png" alt="" style="width: 100%">
+					<p class="text hover" id="chart-click-panel">Launch drone data visualizations</p>
+				</div>
 			</div>
 			<div class="col-md-1"></div>
 		</div>
@@ -132,36 +138,105 @@
 					Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
 				</p>
 			</div>
+		</div>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="wrapper3">
+					<div class="content-package">
+						<img class="story-panel" src="droneaftermath.png" alt="" style="width: 100%">
+						<p class="text hover" id="twitter-click-panel">Launch Drone Twitter Feed</p>
+					</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+			<div id="article-text" class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+					</p>
+					<p>
+						Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+					</p>
+					<p>
+						Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+					</p>
+					<p>
+						Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+					</p>
+				</div>
+				<div class="col-md-3"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10" id="wrapper4">
+				<div class="content-package">
+					<img class="story-panel" src="yemen-drone.png" alt="" style="width: 100%;">
+					<p class="text hover" id="nytimes-click-panel" style="width: 100%">Search For New York Times Stories</p>
+				</div>
+
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div id="article-text" class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+					</p>
+					<p>
+						Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+					</p>
+					<p>
+						Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+					</p>
+					<p>
+						Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+					</p>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
 	</div>
 
+	<div id="signupModal" class="modal" role="dialog">
+  	<div class="modal-dialog">
+			<div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close close-signup" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">Sign Up</h4>
+			      </div>
 
-	<div id="signup-container" style="display: none">
-		<form class="form-horizontal">
-  		<div class="form-group">
-  		<label for="User_Name" class="col-sm-2 control-label">User Name</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputUserName" placeholder="User Name">
-		    </div>
-		    <label for="First_Name" class="col-sm-2 control-label">First Name</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
-		    </div>
-		    <label for="Last_Name" class="col-sm-2 control-label">Last Name</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" >
-		    </div>
-		    <label class="col-sm-2 control-label">Email</label>
-		    <div class="col-sm-10">
-		     <input type="text" class="form-control" id="inputEmail" placeholder="Email" >
-		    </div>
-		     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword" placeholder="Password" >
-		    </div>
-	  	</div>
-		</form>
-	<button id="signup-button">Sign Up</button>
-			
+			      <div class="modal-body">
+								<form class="form-horizontal">
+						  		<div class="form-group">
+								    <label for="User_Name">Username</label>
+								    <input type="text" class="form-control" id="inputUserName" placeholder="User Name">
+								  </div>
+								  <div class="form-group">
+								    <label for="First_Name">First Name</label>
+								    <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+								  </div>
+								  <div class="form-group">
+								    <label for="Last_Name">Last Name</label>
+								     <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" >
+								  </div>
+								  <div class="form-group">
+								    <label>Email</label>
+								    <input type="text" class="form-control" id="inputEmail" placeholder="Email" >
+								  </div>
+								  <div class="form-group">
+								    <label>Password</label>
+								    <input type="password" class="form-control" id="inputPassword" placeholder="Password" >
+								  </div>
+								</form>
+							<button type="submit" class="btn btn-default" id="signup-submit">Sign Up</button>
+						</div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default close-signup" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+	  </div>
 	</div>
 	<!-- show login modal -->
 	<div id="signinModal" class="modal" role="dialog">
@@ -339,7 +414,7 @@
 											<img src="{{img_url}}">
 										</div>
 										<p class="tweet-content">{{content}}</p>
-										<p class="tweet-urls">{{tweet_url}}</p>
+										<p class="tweet-urls"><a href="{{tweet_url}}">{{tweet_url}}</a></p>
 										<p class="tweet-time">{{tweet_time}}</p>
 										<hr>
 									</div>
@@ -390,19 +465,21 @@
 			      </div>
 			      <div class="modal-body">
 			      	<div id="checkboxes" style="display: none">
-								<label class="checkbox-inline"><input id="year" class="box" type="checkbox" value="year">Year</label>
-								<label class="checkbox-inline"><input id="country" class="box" type="checkbox" value="country">Country</label>
-								<label class="checkbox-inline"><input id="region" class="box" type="checkbox" value="region">Region</label>
-								<label class="checkbox-inline"><input id="town" class="box" type="checkbox" value="town">Town</label>
+								<label class="checkbox-inline"><input id="year" class="box" type="checkbox" value="year">Deaths/Year</label>
+								<label class="checkbox-inline"><input id="country" class="box" type="checkbox" value="country">Deaths/Country</label>
+								<label class="checkbox-inline"><input id="region" class="box" type="checkbox" value="region">Deaths/Region</label>
+								<label class="checkbox-inline"><input id="town" class="box" type="checkbox" value="town">Deaths/Town</label>
 								<label class="checkbox-inline"><input id="number" class="box" type="checkbox" value="number">Drone Strikes</label>
-								<button id="submit">Submit</button>
+								<button class="btn btn-default" id="submit">Submit</button>
 							</div>
-					    <div id="viz"></div>
+					    <div id="viz">
+					    	
+					    </div>
 
 							
 						</div>
 				      <div class="modal-footer">
-			        <button type="button" class="btn btn-default close-chart" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn-sm close-chart" data-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 	  </div>

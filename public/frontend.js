@@ -1,24 +1,33 @@
 $(document).ready(function(){ 
 	
 	$("#signup-button").click(function(){
-		event.preventDefault();
+		$('#signupModal').show();
+
+		$('.close-signup').click(function(){
+			$('#signupModal').hide();
+		});
+
+	});
+
+	$("#signup-submit").click(function(){
 		signupForm();
-	});
+	})
 
-	$('#wrapper').mouseover(function(){
-		$('.text').show();
-	});
 
-	$('#wrapper').mouseout(function(){
-		$('.text').hide();
-	});
+	$('#up-button').hide();
 
-	$('#wrapper2').mouseover(function(){
-		$('.text').show();
-	});
+	var topOfDiv = $('#jumbotron').offset().top;
+	$(window).scroll(function(){
+		if ($(window).scrollTop() > topOfDiv) {
+			$('#up-button').show();
+		}
+		else {
+			$('#up-button').hide();
+		}
+	})
 
-	$('#wrapper2').mouseout(function(){
-		$('.text').hide();
+	$('#up-button').click(function(){
+		$("body").animate({ scrollTop: 0 }, 500);
 	});
 
 
@@ -31,7 +40,10 @@ $(document).ready(function(){
 //=======================================================================================
 
 	var signupForm = function(){
+
+
 		var usernameInput = $("#inputUserName").val();
+		console.log(usernameInput);
 		var firstNameInput = $("#inputFirstName").val();
 		var lastNameInput = $("#inputLastName").val();
 		var emailInput = $("#inputEmail").val();
@@ -44,6 +56,7 @@ $(document).ready(function(){
 			email: emailInput,
 			password: passwordInput
 		};
+
 
 		$.ajax({
 			url: '/users',
@@ -77,6 +90,7 @@ $(document).ready(function(){
 			$("#signin-form").remove();
 			$("#signinModal").hide();
 			$('#signin-button').show();
+			$('#signup-button').show();
 		});
 
 		$('#signin-submit').click(function() {
@@ -112,6 +126,8 @@ $(document).ready(function(){
 			data: userLogin
 		}).done(loggedIn).fail(function(){
 			alert('wrong password or email!');
+			$("#signin-button").show();
+			$("#signup-button").show();
 		});
 	}
 
@@ -121,16 +137,21 @@ $(document).ready(function(){
 
 	$('#signout').click(function(){
 		Cookies.remove('loggedinId');
-		location.reload();
+		$('#signin-button').show();
+		$('#signup-button').show();
+		$("#get-articles").hide();
+		$('#signout').hide();
 	});
 
 	var loggedIn = function(data){
 		$('#signinModal').hide();
+		$('#signupModal').hide();
+		$('#signup-button').hide();
 		$("#signup-container").hide();
 		$('#username-container').append('<h1 id="welcome-username">Welcome, ' + data.username + "!</h1>");
 		$('#signin-button').hide();
 		$("#get-articles").show();
-		$('#signout').show()
+		$('#signout').show();
 	}
 
 	var checkCookies = function() {
@@ -144,7 +165,9 @@ $(document).ready(function(){
 			
 		} else {
 			$("#get-articles").hide();
-			$("#signup-container").show();
+			// $("#signup-container").show();
+			$('#signup-button').hide();
+			$('#signup-button').show();
 			$('#signout').hide()
 		};
 
@@ -213,7 +236,13 @@ $(document).ready(function(){
 //=======================================================================================
 
 	$(document).on("click", "#saveArticle", function() {
-		saveArticleUser();
+		if (Cookies.get("loggedinId") == null) {
+     	alert('Log in to save this information!');
+    }
+    else {
+    	saveArticleUser();
+    }
+		
 	});
 
 	var saveArticleUser = function() {

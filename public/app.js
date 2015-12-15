@@ -81,6 +81,8 @@ $(document).ready(function(){
             	"<span class='strikeDeaths'>" + marker.deaths + "</span>" + "<br>" + 
             	"<span class='strikeArticle'>" + "<a href=" + marker.article_link + ">Article</a>" + "</span>" + "<br>" +
             	"<button id='saveArticle'> Save </button>";
+
+
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
   				    return function() {
   				        infowindow.setContent(content);
@@ -96,33 +98,15 @@ $(document).ready(function(){
   //=======================================================================================
         
   			
-  	// google.maps.event.addDomListener(window, 'load', initialize);
+
     initialize();
-    // google.maps.event.addDomListener(window, "resize", resizingMap());
+ 
 
 
 
   	}
 
-  //   $('#mapModal').on('show.bs.modal', function() {
-  //    //Must wait until the render of the modal appear, thats why we use the resizeMap and NOT resizingMap!! ;-)
-  //    resizingMap();
-  //   })
 
-  // function resizeMap() {
-  //   console.log('inside resize map')
-  //    if (typeof map =="undefined") {
-  //     return;
-  //    } 
-  //    setTimeout( function(){resizingMap();} , 200);
-  // }
-
-  // function resizingMap() {
-  //    if(typeof map =="undefined") {
-  //     return;
-  //    }
-     
-  //    google.maps.event.trigger(map, "resize");
      
   
 
@@ -152,6 +136,7 @@ $(document).ready(function(){
   $('#map-click').click(function(){
     makeMyMap();
     $("#mapModal").show();
+
   });
 
   $('#map-click-panel').click(function(){
