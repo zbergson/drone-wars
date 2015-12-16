@@ -17,6 +17,10 @@ html, body {
       margin: 0;
     }
 
+    #up-button {
+    	display: none;
+    }
+
 }
 
 #jumbotron {
