@@ -2,6 +2,19 @@ html, body {
 	margin: 0; padding: 0; height: 100%; 
 }
 
+@media (max-width: 978px) {
+
+	.container {
+      padding:0;
+      margin:0;
+    }
+
+    body {
+      padding:0;
+    }
+
+}
+
 #jumbotron {
 	background-image: linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0,0.75)), url('drone-strike.gif');
 	height: 600px;
