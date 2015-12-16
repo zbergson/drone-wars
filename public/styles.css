@@ -13,13 +13,6 @@ html, body {
       padding:0;
     }
 
-    .story-panel {
-			position: relative;
-			opacity: 0.9;
-			margin-bottom: 5px;
-			margin-top: 5px;
-		}
-
 }
 
 #jumbotron {
@@ -37,20 +30,20 @@ html, body {
 }
 
 #headline-container {
-	padding-top: 50px;
+	padding-top: 3em;
 }
 
 #sub-head {
 	font-family: Georgia;
 	color: white;
 	font-size: 2.5em;
-	padding-top: 20px;
+	padding-top: 0.5em;
 }
 
 #up-button{
 	 position: fixed;
    bottom: 0;
-   left: 20px;
+   left: 0.5em;
    width: 100%;
    font-size: 4em;
 }
@@ -60,8 +53,8 @@ html, body {
 }
 
 #line {
-	width: 500px;
-  height: 2px;
+	width: 22em;
+  height: 0.2em;
   background-color: white;
   margin: 0 auto;
 }
@@ -77,9 +70,10 @@ html, body {
 .story-panel {
 	position: relative;
 	opacity: 0.9;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	/*margin-bottom: 2em;*/
+	margin-top: 2em;
 }
+
 
 .text {
 	position: relative;
@@ -88,13 +82,13 @@ html, body {
 	font-family: 'Bevan', cursive;
 	vertical-align: middle;
 	font-size: 3em;
-	bottom: 360px;
+	bottom: 8em;
 	text-align: center;
 }
 
-.content-package {
+/*.content-package {
 	margin-bottom: -35px;
-}
+}*/
 
 .content-package .hover {
 	color: transparent;
