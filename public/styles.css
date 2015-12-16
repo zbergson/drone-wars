@@ -2,7 +2,7 @@ html, body {
 	margin: 0; padding: 0; height: 100%; 
 }
 
-@media (max-width: 978px) {
+@media (max-width: 480px) {
 
 	.container {
       padding:0;
