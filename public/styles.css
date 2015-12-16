@@ -6,7 +6,10 @@ html, body {
 
 	.container-fluid {
       padding: 0;
-      margin: 0 auto;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 20px;
+      margin-right: 0;
     }
 
     body {
