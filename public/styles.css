@@ -18,7 +18,7 @@ html, body {
     }
 
     #up-button {
-    	display: none;
+    	visibility: hidden;
     }
 
     .content-package {
