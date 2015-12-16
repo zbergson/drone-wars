@@ -285,16 +285,16 @@ app.delete('/users/:id/nyt/:article_id', function(req, res){
 // Search Twitter
 //================
 
-// client.stream('statuses/filter', {track: 'drone'}, function(stream) {
-//   stream.on('data', function(tweet) {
-//     io.emit('drone-tweets', tweet);
-//   });
+client.stream('statuses/filter', {track: 'drone'}, function(stream) {
+  stream.on('data', function(tweet) {
+    io.emit('drone-tweets', tweet);
+  });
  
-//   stream.on('error', function(error) {
-//     console.log(error);
-//     throw error;
+  stream.on('error', function(error) {
+    console.log(error);
+    throw error;
 
-//   });
-// });
+  });
+});
 
 
