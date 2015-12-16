@@ -8,7 +8,7 @@ $(document).ready(function(){
   //=======================================================================================
     var getDrones = function() {
 
-    	var urlDrone = 'https://api.dronestre.am/data';
+    	var urlDrone = 'http://api.dronestre.am/data';
     		
 
     	$.ajax({
