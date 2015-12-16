@@ -13,6 +13,13 @@ html, body {
       padding:0;
     }
 
+    .story-panel {
+			position: relative;
+			opacity: 0.9;
+			margin-bottom: 5px;
+			margin-top: 5px;
+		}
+
 }
 
 #jumbotron {
