@@ -2,8 +2,33 @@ html, body {
 	margin: 0; padding: 0; height: 100%; 
 }
 
+@media (max-width: 480px) {
+
+	.container-fluid {
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 20px;
+      margin-right: -40px;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    #up-button {
+    	visibility: hidden;
+    }
+
+    .content-package {
+    	margin-bottom: -10em;
+    }
+
+}
+
 #jumbotron {
-	background-image: linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0,0.75)), url('drone-strike.gif');
+	background-image: linear-gradient(rgba(0,0,0, 0.65), rgba(0,0,0,0.65)), url('drone-strike.gif');
 	height: 600px;
 	background-size: cover;
 	background-position: center;
@@ -17,20 +42,20 @@ html, body {
 }
 
 #headline-container {
-	padding-top: 50px;
+	padding-top: 3em;
 }
 
 #sub-head {
 	font-family: Georgia;
 	color: white;
 	font-size: 2.5em;
-	padding-top: 20px;
+	padding-top: 0.5em;
 }
 
 #up-button{
 	 position: fixed;
    bottom: 0;
-   left: 20px;
+   left: 0.5em;
    width: 100%;
    font-size: 4em;
 }
@@ -40,8 +65,8 @@ html, body {
 }
 
 #line {
-	width: 500px;
-  height: 2px;
+	width: 22em;
+  height: 0.2em;
   background-color: white;
   margin: 0 auto;
 }
@@ -57,23 +82,22 @@ html, body {
 .story-panel {
 	position: relative;
 	opacity: 0.9;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	/*margin-bottom: 2em;*/
+	margin-top: 2em;
 }
+
 
 .text {
 	position: relative;
-	width: 85%;
 	margin: 0 auto;
 	font-family: 'Bevan', cursive;
-	vertical-align: middle;
 	font-size: 3em;
-	bottom: 360px;
+	bottom: 8em;
 	text-align: center;
 }
 
 .content-package {
-	margin-bottom: -35px;
+	margin-bottom: -2em;
 }
 
 .content-package .hover {
@@ -101,13 +125,6 @@ html, body {
 	height: 100%;
 }
 
-#twitter-logo {
-	opacity: 0.7;
-}
-
-#twitter-logo:hover {
-	opacity: 0.5;
-}
 
 #jumbo-container {
 	position: relative;
@@ -264,6 +281,15 @@ html, body {
 #article-text p {
 	font-family: Georgia;
 	font-size: 1.5em;
+}
+
+
+
+#end {
+ border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
 

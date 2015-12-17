@@ -24,12 +24,14 @@
 	<script src="charts.js"></script>
 </head>
 <body>
-
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-12 col-sm-12"></div>
 	<div id="jumbotron">
 		<div id="jumbo-container">
 			<div class="row">
-				<div class="col-md-8"></div>
-				<div class="col-md-4">
+				<div class="col-md-8 col-sm-8"></div>
+				<div class="col-md-4 col-sm-4">
 					<ul id="navbar">
 						<li id="signup-button">SIGN UP</li>
 						<li id="get-articles">PROFILE</li>
@@ -44,159 +46,165 @@
 				
 			</div>
 			<div id="headline-container" class="row">
-			  <div class="col-md-2"></div>
-			  <div class="col-md-8">
+			  <div class="col-md-2 col-sm-2"></div>
+			  <div class="col-md-8 col-sm-8">
 			  	<h1 id="headline">Death By Hellfire</h1>
 			  </div>
-			  <div class="col-md-2"></div>
+			  <div class="col-md-2 col-sm-2"></div>
 			</div>
 			<div class="row">
-			  <div class="col-md-1"></div>
-			  <div class="col-md-10">
+			  <div class="col-md-1 col-sm-1"></div>
+			  <div class="col-md-10 col-sm-10">
 			  	<h4 id="sub-head">A Guide To The CIA's Not-So-Secret Drone Program</h4>
 			  </div>
-			  <div class="col-md-1"></div>
+			  <div class="col-md-1 col-sm-1"></div>
 			</div>
 			<br>
 			<div id="line"></div>
 			<br>
 			<h6 id="byline"><i>By Zach Bergson</i></h5>
 		</div>
-		
 	</div>
+</div>
 	<div id="story">
 		<div id="article-text" class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-3 col-sm-3"></div>
+			<div class="col-md-6 col-sm-6">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+					<i>This is an interactive news story and application I created for my final project at General Assembly's
+						WDI Program. It features an interactive map and search function that allows users to save information, animated charts created with D3.js and a live Twitter feed about drones. All drone strike data comes from the Dronestream API, which was created by The Intercept's Josh Begley. </i>
+				</p>
+				<p style="text-align: center">
+					***
 				</p>
 				<p>
-					Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+					Since 2002, the Central Intelligance Agency and the Joint Special Operations Command have conducted an unofficial drone-assasination program that has killed approximately 5,200 people in Pakistan, Yemen and Somalia. 
 				</p>
 				<p>
-					Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+					George W. Bush was the first Commander-In-Chief to sign off on a targeted killing by drone strike. Fifty-three assasinations -- primarily in Pakistan -- occurred during his presidency.
 				</p>
 				<p>
-					Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+					By the time President Barack Obama was elected in 2008, Americans were fed up with bloody ground wars in the Middle East. His administration needed an alternative to sacrificing thousands of American lives and billions of dollars fighting on the ground, and the CIA and JSOC's drone program was the best option.
 				</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3 col-sm-3"></div>
 		</div>
-		<div id="up-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></div>
+		<div id="up-button"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true" data-position="fixed"></span></div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10" id="wrapper">
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10 col-sm-10" id="wrapper">
 				<div class="content-package">
 					<img class="story-panel" src="map.png" alt="" style="width: 100%">
 					<p class="text hover" id="map-click-panel">Launch map visualization</p>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-sm-1"></div>
 		</div>
 		<div id="article-text" class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-3 col-sm-3"></div>
+			<div class="col-md-6 col-sm-6">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+					Throughout Obama's seven years in office, his administration has carried out 554 drone strikes in Pakistan, Yemen and Somalia. 
 				</p>
 				<p>
-					Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+					Many of those attacks killed their intended targets, and they've undoubtedly saved the lives of covert military personnel who would have otherwise had to conduct those operations on the ground. 
 				</p>
 				<p>
-					Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+					But the civilian toll has also been steep -- so steep, in fact, that many have argued the program does more harm than good for U.S. interests. Citing an unnamed government whisteblower, <a href="https://theintercept.com/drone-papers/the-assassination-complex/">the Intercept recently found</a> that in a five-month period between Jan. 2012 and Feb. 2013, 90 percent of fatalities were not intended targets.
 				</p>
 				<p>
-					Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+					There isn't much data available to the public on who is actually killed in each attack. But if that percentage is anywhere close to being representative of the effectiveness of the drone-assasination program as a whole, the U.S. government has killed thousands of innocent people in Pakistan, Yemen and Somalia. 
 				</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3 col-sm-3"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10" id="wrapper2">
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10 col-sm-10" id="wrapper2">
 				<div class="content-package">
 					<img class="story-panel" src="visualizations.png" alt="" style="width: 100%">
 					<p class="text hover" id="chart-click-panel">Launch drone data visualizations</p>
 				</div>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-sm-1"></div>
 		</div>
 		<div id="article-text" class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-3 col-sm-3"></div>
+			<div class="col-md-6 col-sm-6">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+					According to Dronestream's data (which live updates), 4,519 people have been killed by the drone-assasination program during Obama's administration alone. 
 				</p>
 				<p>
-					Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+					Pakistan, specifically Northwest Pakistan, has felt the brunt of the drone program.  
 				</p>
 				<p>
-					Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+					More than 3,900 people have been killed there since 2002, more than Somalia and Yemen combined. In Datta Khel, a town located near the Afghan border, 334 fatalities have occurred, a higher death toll than the entire state of Somalia.  
 				</p>
 				<p>
-					Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+					Northwest Pakistan has been a haven for Taliban fighters from Afghanistan for decades, and many U.S. drone strikes carried out there have killed significant Taliban officials. 
 				</p>
 			</div>
+			<div class="col-md-3 col-sm-3"></div>
 		</div>
 			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-10" id="wrapper3">
+				<div class="col-md-1 col-sm-1"></div>
+				<div class="col-md-10 col-sm-10" id="wrapper3">
 					<div class="content-package">
 						<img class="story-panel" src="droneaftermath.png" alt="" style="width: 100%">
 						<p class="text hover" id="twitter-click-panel">Launch Drone Twitter Feed</p>
 					</div>
 				</div>
-				<div class="col-md-1"></div>
+				<div class="col-md-1 col-sm-1"></div>
 			</div>
 			<div id="article-text" class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
+				<div class="col-md-3 col-sm-3"></div>
+				<div class="col-md-6 col-sm-6">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+						But many innocent civilians have been caught in the crossfire. 
 					</p>
 					<p>
-						Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+						In 2011, for instance, a <a href="http://www.bbc.com/news/world-south-asia-12769209">targeted attack in Datta Khel killed 40 tribal elders</a>, tradesmen and police officers.  
 					</p>
 					<p>
-						Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
+						Beyond gratitous killings of civilians, drone assasinations have done great damage to U.S. interests in the Middle East in some cases. 
 					</p>
 					<p>
-						Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+						In 2011, the CIA and JSOC ramped up their attacks in Yemen, and managed kill many Al-Qaeda terrorists hiding there. 
 					</p>
 				</div>
-				<div class="col-md-3"></div>
+				<div class="col-md-3 col-sm-3"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10" id="wrapper4">
+			<div class="col-md-1 col-sm-1"></div>
+			<div class="col-md-10 col-sm-10" id="wrapper4">
 				<div class="content-package">
 					<img class="story-panel" src="yemen-drone.png" alt="" style="width: 100%;">
 					<p class="text hover" id="nytimes-click-panel" style="width: 100%">Search For New York Times Stories</p>
 				</div>
 
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-1 col-sm-1"></div>
 		</div>
 		<div id="article-text" class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
+			<div class="col-md-3 col-sm-3"></div>
+			<div class="col-md-6" "col-sm-6">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at facilisis turpis. Nulla aliquet, nunc in euismod iaculis, sem dui aliquet augue, in aliquet quam lectus quis leo. 
+						But the attacks, 144 in total, also influenced Yemenis to oust former president and U.S-ally Ali Abdullah Saleh, and pave the way for the civil war that's currently ravaging the nation. 
 					</p>
 					<p>
-						Aenean ut dictum justo, eget eleifend turpis. Nunc quis nunc posuere, consectetur arcu vitae, rutrum purus. Donec ultricies ac est et scelerisque. Sed sed turpis vel ex tristique dapibus vel in purus. Mauris ullamcorper finibus tortor, a venenatis massa dignissim ac. Nullam interdum justo eget urna suscipit consectetur. Mauris semper dapibus faucibus. 
+						Fighting terrorism across the globe clearly isn't a black and white affair. This interactive news story can help you stay informed on a key component in America's ongoing war against terrorism across the globe.
 					</p>
+					<hr id="end">
+					<!-- <p style="text-align: center">***</p> -->
 					<p>
-						Nulla venenatis commodo diam sit amet fringilla. Nulla fringilla elementum mauris elementum malesuada. Nulla cursus arcu ac orci tincidunt, elementum lobortis enim finibus. Praesent risus ante, pharetra sed ex vel, porttitor pulvinar ex. Ut ac erat massa. Duis felis nibh, molestie at magna sit amet, sagittis semper erat. 
-					</p>
-					<p>
-						Duis ac risus vel urna aliquet luctus. Maecenas ut eros turpis. Maecenas id lobortis nunc. Aliquam erat volutpat.
+						<i>Images courtesy of the Intercept, New York Times and Reuters. Data courtesy Dronestream.</i>
 					</p>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3 col-sm-3"></div>
 		</div>
 	</div>
+	</div>
+</div>
 
 	<div id="signupModal" class="modal" role="dialog">
   	<div class="modal-dialog">
@@ -207,7 +215,7 @@
 			      </div>
 
 			      <div class="modal-body">
-								<form class="form-horizontal">
+								<form>
 						  		<div class="form-group">
 								    <label for="User_Name">Username</label>
 								    <input type="text" class="form-control" id="inputUserName" placeholder="User Name">
@@ -313,11 +321,9 @@
       		<p>{{username}}</p>
       		{{#each articles}}
       		<div class="individual-drone-articles" data-id="{{_id}}">
-	      	  <p id="article-town">{{town}}</p>
-	      	  <p id="article-country">{{country}}</p>
-	      	  <p id="article-narrative">{{narrative}}</p>
+	      	  <h4 id="article-town">Location: {{town}}, {{country}} </h4>
 	      	  <p id="article-deaths">Deaths: {{deaths}}</p>
-	      	  <p id="article-link"><a href={{article_link}}>article</a></p>
+	      	  <p id="article-link"><a href={{article_link}}>{{narrative}}</a></p>
 	      	  <button type="button" class="btn btn-default btn-sm remove-article">
 		  				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 						</button>
